@@ -35,6 +35,8 @@ class UsersController < ApplicationController
   def is_authenticated_user
     # @book = Book.find(params[:id])
     @user = User.find(params[:id])
-    redirect_to(books_path) unless @user == current_user
+    unless @user == current_user
+     redirect_to user_path(current_user.id) 
+    end
   end
 end
